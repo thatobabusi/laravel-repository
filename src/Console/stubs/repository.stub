@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use {{ modelNamespace }}\{{ model }};
+
+class {{ class }} extends BaseRepository
+{
+    protected array $fieldSearchable = [
+        //
+    ];
+
+    public function model(): string
+    {
+        return {{ model }}::class;
+    }
+}

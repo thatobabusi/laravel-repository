@@ -1,0 +1,49 @@
+{
+    "name": "thatobabusi/laravel-repository-pattern",
+    "description": "A Laravel 13-compatible repository pattern implementation with Eloquent, criteria-based filtering, and Artisan generators.",
+    "keywords": ["laravel", "repository", "pattern", "criteria", "eloquent"],
+    "homepage": "https://github.com/thatobabusi/laravel-repository-pattern",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thato Babusi",
+            "email": "thato@thatobabusi.com",
+            "homepage": "https://thatobabusi.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11|^12|^13",
+        "illuminate/database": "^11|^12|^13",
+        "illuminate/console": "^11|^12|^13"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9|^10",
+        "phpunit/phpunit": "^11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thatobabusi\\LaravelRepositoryPattern\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thatobabusi\\LaravelRepositoryPattern\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thatobabusi\\LaravelRepositoryPattern\\LaravelRepositoryPatternServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
