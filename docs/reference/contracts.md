@@ -6,7 +6,7 @@ Three interfaces define the full public API. Type-hinting against these instead 
 
 ## `RepositoryInterface`
 
-**Namespace:** `Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface`
+**Namespace:** `Laravel\Repository\Contracts\RepositoryInterface`
 
 The primary contract. Covers all CRUD, query, and scope operations.
 
@@ -57,7 +57,7 @@ interface RepositoryInterface
 
 ## `CriteriaInterface`
 
-**Namespace:** `Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface`
+**Namespace:** `Laravel\Repository\Contracts\CriteriaInterface`
 
 Implemented by every criteria class. The single `apply()` method receives the current Eloquent builder and must return it (modified or not).
 
@@ -74,7 +74,7 @@ interface CriteriaInterface
 
 ## `RepositoryCriteriaInterface`
 
-**Namespace:** `Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryCriteriaInterface`
+**Namespace:** `Laravel\Repository\Contracts\RepositoryCriteriaInterface`
 
 Manages the criteria stack on a repository.
 
@@ -99,7 +99,7 @@ interface RepositoryCriteriaInterface
 ```php
 // AppServiceProvider.php
 use App\Repositories\UserRepository;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 $this->app->when(UserController::class)
     ->needs(RepositoryInterface::class)
@@ -117,7 +117,7 @@ $this->app->bind(PostRepository::class, PostRepository::class);
 
 ## `RepositoryException`
 
-**Namespace:** `Thatobabusi\LaravelRepositoryPattern\Exceptions\RepositoryException`
+**Namespace:** `Laravel\Repository\Exceptions\RepositoryException`
 
 Thrown by `BaseRepository` when:
 
@@ -125,7 +125,7 @@ Thrown by `BaseRepository` when:
 - `pushCriteria()` receives an object that does not implement `CriteriaInterface`
 
 ```php
-use Thatobabusi\LaravelRepositoryPattern\Exceptions\RepositoryException;
+use Laravel\Repository\Exceptions\RepositoryException;
 
 try {
     $this->users->pushCriteria(new \stdClass());

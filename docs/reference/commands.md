@@ -33,7 +33,7 @@ The `Repository` suffix is always appended to the class name.
 ```php
 namespace App\Repositories;
 
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use Laravel\Repository\Eloquent\BaseRepository;
 use App\Models\User;
 
 class UserRepository extends BaseRepository
@@ -101,8 +101,8 @@ Creates a new criteria class that implements `CriteriaInterface`.
 ```php
 namespace App\Criteria;
 
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 class ActiveUsersCriteria implements CriteriaInterface
 {

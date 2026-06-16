@@ -1,12 +1,12 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Tests\Unit;
+namespace Laravel\Repository\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
-use Thatobabusi\LaravelRepositoryPattern\Exceptions\RepositoryException;
-use Thatobabusi\LaravelRepositoryPattern\Tests\TestCase;
+use Laravel\Repository\Eloquent\BaseRepository;
+use Laravel\Repository\Exceptions\RepositoryException;
+use Laravel\Repository\Tests\TestCase;
 
 // ── Fakes ─────────────────────────────────────────────────────────────────
 
@@ -319,8 +319,8 @@ class BaseRepositoryTest extends TestCase
         PqUser::create(['name' => 'Alice', 'email' => 'alice@example.com', 'active' => true]);
         PqUser::create(['name' => 'Bob', 'email' => 'bob@example.com', 'active' => false]);
 
-        $criteria = new class implements \Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface {
-            public function apply(mixed $model, \Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface $repo): mixed
+        $criteria = new class implements \Laravel\Repository\Contracts\CriteriaInterface {
+            public function apply(mixed $model, \Laravel\Repository\Contracts\RepositoryInterface $repo): mixed
             {
                 return $model->where('active', true);
             }
@@ -344,8 +344,8 @@ class BaseRepositoryTest extends TestCase
         PqUser::create(['name' => 'Alice', 'email' => 'alice@example.com', 'active' => true]);
         PqUser::create(['name' => 'Bob', 'email' => 'bob@example.com', 'active' => false]);
 
-        $criteria = new class implements \Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface {
-            public function apply(mixed $model, \Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface $repo): mixed
+        $criteria = new class implements \Laravel\Repository\Contracts\CriteriaInterface {
+            public function apply(mixed $model, \Laravel\Repository\Contracts\RepositoryInterface $repo): mixed
             {
                 return $model->where('active', true);
             }
@@ -358,8 +358,8 @@ class BaseRepositoryTest extends TestCase
 
     public function test_pop_criteria_removes_specific_criteria(): void
     {
-        $criteria = new class implements \Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface {
-            public function apply(mixed $model, \Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface $repo): mixed
+        $criteria = new class implements \Laravel\Repository\Contracts\CriteriaInterface {
+            public function apply(mixed $model, \Laravel\Repository\Contracts\RepositoryInterface $repo): mixed
             {
                 return $model->where('active', true);
             }

@@ -1,15 +1,15 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Tests;
+namespace Laravel\Repository\Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Thatobabusi\LaravelRepositoryPattern\LaravelRepositoryPatternServiceProvider;
+use Laravel\Repository\LaravelRepositoryServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {
     protected function getPackageProviders($app): array
     {
-        return [LaravelRepositoryPatternServiceProvider::class];
+        return [LaravelRepositoryServiceProvider::class];
     }
 
     protected function getEnvironmentSetUp($app): void

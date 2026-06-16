@@ -1,6 +1,6 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Console\Commands;
+namespace Laravel\Repository\Console\Commands;
 
 use Illuminate\Console\Command;
 

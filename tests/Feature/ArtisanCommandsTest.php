@@ -1,8 +1,8 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Tests\Feature;
+namespace Laravel\Repository\Tests\Feature;
 
-use Thatobabusi\LaravelRepositoryPattern\Tests\TestCase;
+use Laravel\Repository\Tests\TestCase;
 
 class ArtisanCommandsTest extends TestCase
 {

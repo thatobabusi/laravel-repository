@@ -1,8 +1,8 @@
 {
-    "name": "thatobabusi/laravel-repository-pattern",
+    "name": "thatobabusi/laravel-repository",
     "description": "A Laravel 13-compatible repository pattern implementation with Eloquent, criteria-based filtering, and Artisan generators.",
-    "keywords": ["laravel", "repository", "pattern", "criteria", "eloquent"],
-    "homepage": "https://github.com/thatobabusi/laravel-repository-pattern",
+    "keywords": ["thatobabusi", "laravel", "repository", "pattern", "criteria", "eloquent"],
+    "homepage": "https://github.com/thatobabusi/laravel-repository",
     "license": "MIT",
     "authors": [
         {
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Thatobabusi\\LaravelRepositoryPattern\\": "src/"
+            "Laravel\\Repository\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Thatobabusi\\LaravelRepositoryPattern\\Tests\\": "tests/"
+            "Laravel\\Repository\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Thatobabusi\\LaravelRepositoryPattern\\LaravelRepositoryPatternServiceProvider"
+                "Laravel\\Repository\\LaravelRepositoryServiceProvider"
             ]
         },
         "branch-alias": {

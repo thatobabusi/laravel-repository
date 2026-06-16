@@ -7,7 +7,7 @@
 ## Basic usage
 
 ```php
-use Thatobabusi\LaravelRepositoryPattern\Criteria\RequestCriteria;
+use Laravel\Repository\Criteria\RequestCriteria;
 
 class UserController extends Controller
 {

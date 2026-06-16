@@ -4,7 +4,7 @@
 
 ### Service provider is not loading
 
-Laravel should auto-discover `Thatobabusi\LaravelRepositoryPattern\LaravelRepositoryPatternServiceProvider`.
+Laravel should auto-discover `Laravel\Repository\LaravelRepositoryServiceProvider`.
 
 If commands are missing, refresh package discovery:
 
@@ -83,7 +83,7 @@ Terminal read methods reset the model after execution. If you are seeing unexpec
 Only instances of `CriteriaInterface` can be pushed:
 
 ```php
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\CriteriaInterface;
 
 class ActiveUsersCriteria implements CriteriaInterface
 {

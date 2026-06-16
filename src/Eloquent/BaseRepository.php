@@ -1,15 +1,15 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Eloquent;
+namespace Laravel\Repository\Eloquent;
 
 use Closure;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryCriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
-use Thatobabusi\LaravelRepositoryPattern\Exceptions\RepositoryException;
+use Laravel\Repository\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryCriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
+use Laravel\Repository\Exceptions\RepositoryException;
 
 abstract class BaseRepository implements RepositoryInterface, RepositoryCriteriaInterface
 {

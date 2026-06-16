@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use Laravel\Repository\Eloquent\BaseRepository;
 use {{ modelNamespace }}\{{ model }};
 
 class {{ class }} extends BaseRepository

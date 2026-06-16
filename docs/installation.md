@@ -14,10 +14,10 @@
 ## 1. Install via Composer
 
 ```bash
-composer require thatobabusi/laravel-repository-pattern
+composer require thatobabusi/laravel-repository
 ```
 
-Laravel auto-discovers `LaravelRepositoryPatternServiceProvider` - no manual registration is needed.
+Laravel auto-discovers `LaravelRepositoryServiceProvider` - no manual registration is needed.
 
 ---
 
@@ -48,7 +48,7 @@ This generates `app/Repositories/UserRepository.php` with a stub ready to fill i
 ```php
 namespace App\Repositories;
 
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use Laravel\Repository\Eloquent\BaseRepository;
 use App\Models\User;
 
 class UserRepository extends BaseRepository

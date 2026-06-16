@@ -1,6 +1,6 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Contracts;
+namespace Laravel\Repository\Contracts;
 
 interface RepositoryInterface
 {

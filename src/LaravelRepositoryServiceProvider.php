@@ -1,12 +1,12 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern;
+namespace Laravel\Repository;
 
 use Illuminate\Support\ServiceProvider;
-use Thatobabusi\LaravelRepositoryPattern\Console\Commands\MakeCriteriaCommand;
-use Thatobabusi\LaravelRepositoryPattern\Console\Commands\MakeRepositoryCommand;
+use Laravel\Repository\Console\Commands\MakeCriteriaCommand;
+use Laravel\Repository\Console\Commands\MakeRepositoryCommand;
 
-class LaravelRepositoryPatternServiceProvider extends ServiceProvider
+class LaravelRepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

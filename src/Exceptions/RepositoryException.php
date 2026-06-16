@@ -1,6 +1,6 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Exceptions;
+namespace Laravel\Repository\Exceptions;
 
 use Exception;
 

@@ -15,8 +15,8 @@ Creates `app/Criteria/ActiveUsersCriteria.php` (the `Criteria` suffix is added a
 ```php
 namespace App\Criteria;
 
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 class ActiveUsersCriteria implements CriteriaInterface
 {

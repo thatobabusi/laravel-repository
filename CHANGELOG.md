@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `thatobabusi/laravel-repository-pattern` are documented here.
+All notable changes to `thatobabusi/laravel-repository` are documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -34,5 +34,5 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Field-specific search syntax (`field:value`) no longer leaks `%%` LIKE wildcards into unrelated fields
 - `paginate()` respects the explicitly passed `$limit` argument over the config default
 
-[Unreleased]: https://github.com/thatobabusi/laravel-repository-pattern/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/thatobabusi/laravel-repository-pattern/releases/tag/v1.0.0
+[Unreleased]: https://github.com/thatobabusi/laravel-repository/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/thatobabusi/laravel-repository/releases/tag/v1.0.0

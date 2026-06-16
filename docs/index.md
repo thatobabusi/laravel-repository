@@ -1,4 +1,4 @@
-# Laravel Repository Pattern Documentation Index
+# Laravel Repository Documentation Index
 
 Complete, navigable reference for all documentation.
 

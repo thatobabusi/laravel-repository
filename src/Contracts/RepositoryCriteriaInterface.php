@@ -1,6 +1,6 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Contracts;
+namespace Laravel\Repository\Contracts;
 
 use Illuminate\Support\Collection;
 

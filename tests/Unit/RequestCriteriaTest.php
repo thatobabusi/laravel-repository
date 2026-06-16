@@ -1,11 +1,11 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Tests\Unit;
+namespace Laravel\Repository\Tests\Unit;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
-use Thatobabusi\LaravelRepositoryPattern\Criteria\RequestCriteria;
-use Thatobabusi\LaravelRepositoryPattern\Tests\TestCase;
+use Laravel\Repository\Criteria\RequestCriteria;
+use Laravel\Repository\Tests\TestCase;
 
 class RequestCriteriaTest extends TestCase
 {
@@ -129,7 +129,7 @@ class PqProduct extends \Illuminate\Database\Eloquent\Model
     protected $casts = ['available' => 'boolean', 'price' => 'float'];
 }
 
-class PqProductRepository extends \Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository
+class PqProductRepository extends \Laravel\Repository\Eloquent\BaseRepository
 {
     protected array $fieldSearchable = ['name' => 'like', 'sku' => '='];
 

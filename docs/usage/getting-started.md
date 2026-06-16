@@ -15,7 +15,7 @@ Creates `app/Repositories/UserRepository.php`:
 ```php
 namespace App\Repositories;
 
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use Laravel\Repository\Eloquent\BaseRepository;
 use App\Models\User;
 
 class UserRepository extends BaseRepository
@@ -68,7 +68,7 @@ Bind the concrete repository to the interface in `AppServiceProvider` (or a dedi
 
 ```php
 use App\Repositories\UserRepository;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 public function register(): void
 {

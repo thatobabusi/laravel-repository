@@ -1,15 +1,15 @@
-# Laravel Repository Pattern
+# Laravel Repository Toolkit
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/thatobabusi/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository-pattern)
-[![Total Downloads](https://img.shields.io/packagist/dt/thatobabusi/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository-pattern)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/thatobabusi/laravel-repository.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository)
+[![Total Downloads](https://img.shields.io/packagist/dt/thatobabusi/laravel-repository.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Laravel Repository Pattern is an Eloquent-backed repository toolkit for Laravel applications. It gives you a reusable `BaseRepository`, contracts for CRUD and criteria-based query composition, HTTP-driven filtering with `RequestCriteria`, and Artisan generators for repositories and criteria.
+Laravel Repository is an Eloquent-backed repository toolkit for Laravel applications. It gives you a reusable `BaseRepository`, contracts for CRUD and criteria-based query composition, HTTP-driven filtering with `RequestCriteria`, and Artisan generators for repositories and criteria.
 
 ## Quick Start
 
 ```bash
-composer require thatobabusi/laravel-repository-pattern
+composer require thatobabusi/laravel-repository
 php artisan vendor:publish --tag=repository-config
 php artisan make:repository User
 ```
@@ -20,7 +20,7 @@ The generated repository only needs to point at its Eloquent model:
 namespace App\Repositories;
 
 use App\Models\User;
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
+use Laravel\Repository\Eloquent\BaseRepository;
 
 class UserRepository extends BaseRepository
 {
@@ -107,7 +107,7 @@ Push `RequestCriteria` in a controller and expose a flexible listing endpoint:
 ```php
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Thatobabusi\LaravelRepositoryPattern\Criteria\RequestCriteria;
+use Laravel\Repository\Criteria\RequestCriteria;
 
 class UserController extends Controller
 {
@@ -137,8 +137,8 @@ php artisan make:criteria ActiveUsers
 ```php
 namespace App\Criteria;
 
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 class ActiveUsersCriteria implements CriteriaInterface
 {

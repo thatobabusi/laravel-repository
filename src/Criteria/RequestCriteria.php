@@ -1,11 +1,11 @@
 <?php
 
-namespace Thatobabusi\LaravelRepositoryPattern\Criteria;
+namespace Laravel\Repository\Criteria;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\CriteriaInterface;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Laravel\Repository\Contracts\CriteriaInterface;
+use Laravel\Repository\Contracts\RepositoryInterface;
 
 class RequestCriteria implements CriteriaInterface
 {

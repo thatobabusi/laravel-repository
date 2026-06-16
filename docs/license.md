@@ -1,6 +1,6 @@
 # License
 
-Laravel Repository Pattern is open-source software released under the **MIT License**.
+Laravel Repository is open-source software released under the **MIT License**.
 
 ---
 
