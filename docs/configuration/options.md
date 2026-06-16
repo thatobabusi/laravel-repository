@@ -6,7 +6,7 @@ All configuration lives in `config/repository.php`. Publish it to override the d
 php artisan vendor:publish --tag=repository-config
 ```
 
-The package merges its own defaults on every boot — you only need to publish and edit this file if you want to change something.
+The package merges its own defaults on every boot - you only need to publish and edit this file if you want to change something.
 
 ---
 
@@ -14,7 +14,7 @@ The package merges its own defaults on every boot — you only need to publish a
 
 ### `pagination.limit`
 
-**Type:** `int` — **Default:** `env('REPOSITORY_PAGINATION_LIMIT', 15)`
+**Type:** `int` - **Default:** `env('REPOSITORY_PAGINATION_LIMIT', 15)`
 
 The number of records returned per page when `paginate()` or `simplePaginate()` is called without an explicit `$limit` argument.
 
@@ -64,7 +64,7 @@ Maps `RequestCriteria` URL parameter names to the keys it reads from `$request->
 | `withCount` | `withCount` | Eager-load relation counts |
 | `searchJoin` | `searchJoin` | Boolean operator between search fields (`and` or `or`) |
 
-**Example — use `q` instead of `search` and `sort` instead of `orderBy`:**
+**Example - use `q` instead of `search` and `sort` instead of `orderBy`:**
 
 ```env
 REPOSITORY_CRITERIA_SEARCH=q
@@ -98,7 +98,7 @@ Controls where `make:repository` and `make:criteria` put generated files and wha
 | `paths.repositories` | `'Repositories'` | Sub-directory for repository classes |
 | `paths.criteria` | `'Criteria'` | Sub-directory for criteria classes |
 
-**Example — generate into a `src/` DDD structure:**
+**Example - generate into a `src/` DDD structure:**
 
 ```php
 'generator' => [

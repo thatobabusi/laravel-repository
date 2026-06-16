@@ -20,11 +20,11 @@ The closure receives the current Eloquent builder and must return it (modified o
 
 | | `scopeQuery` | Criteria class |
 |---|---|---|
-| Reusable across repositories | — | ✓ |
-| Composable / stackable | — | ✓ |
-| Constructor arguments | ✓ (closure captures) | ✓ |
-| One-off inline constraint | ✓ | — |
-| Readable in complex query chains | — | ✓ |
+| Reusable across repositories | No | Yes |
+| Composable / stackable | No | Yes |
+| Constructor arguments | Yes (closure captures) | Yes |
+| One-off inline constraint | Yes | No |
+| Readable in complex query chains | No | Yes |
 
 Use `scopeQuery` for quick, one-off filters inline in a controller or service. Create a criteria class when the constraint is reused, complex, or needs a meaningful name.
 

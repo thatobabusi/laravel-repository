@@ -17,7 +17,7 @@
 composer require thatobabusi/laravel-repository-pattern
 ```
 
-Laravel auto-discovers `LaravelRepositoryPatternServiceProvider` — no manual registration is needed.
+Laravel auto-discovers `LaravelRepositoryPatternServiceProvider` - no manual registration is needed.
 
 ---
 
@@ -33,7 +33,7 @@ Creates `config/repository.php` where you can change:
 - Query-string parameter names used by `RequestCriteria`
 - Generator output paths and root namespace
 
-The package merges its own defaults, so publishing is only required if you want to override something. See [Configuration → Options](configuration/options) for the full reference.
+The package merges its own defaults, so publishing is only required if you want to override something. See [Configuration Options](configuration/options.md) for the full reference.
 
 ---
 
@@ -64,7 +64,7 @@ class UserRepository extends BaseRepository
 }
 ```
 
-See [Usage → Getting Started](usage/getting-started) to continue from here.
+See [Getting Started](usage/getting-started.md) to continue from here.
 
 ---
 

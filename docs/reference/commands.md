@@ -71,7 +71,7 @@ Change the base path and namespace via `config/repository.php`:
 ],
 ```
 
-See [Configuration → Options](../configuration/options) for the full reference.
+See [Configuration Options](../configuration/options.md) for the full reference.
 
 ---
 

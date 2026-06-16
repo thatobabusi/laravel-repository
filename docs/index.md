@@ -1,67 +1,77 @@
-# Laravel Repository Pattern
+# Laravel Repository Pattern Documentation Index
 
-A clean, Eloquent-backed implementation of the repository pattern for Laravel 11–13. Decouples your controllers and services from the database layer, adds reusable criteria-based query composition, and provides Artisan generators so new repositories take seconds to create.
+Complete, navigable reference for all documentation.
 
----
+## Quick Navigation
 
-## What it provides
+### Getting Started (5-10 min)
+1. [Installation & Setup](installation.md) - Install the package, publish config, and generate a repository.
+2. [Getting Started](usage/getting-started.md) - Bind, inject, query, and extend repositories.
+3. [Configuration](configuration/options.md) - Configure pagination, request parameters, and generator paths.
 
-| Component | Description |
-|---|---|
-| `RepositoryInterface` | Full contract for all CRUD, query, and scope operations |
-| `CriteriaInterface` | Single-method contract for reusable query modifiers |
-| `RepositoryCriteriaInterface` | Criteria management: push, pop, skip, reset |
-| `BaseRepository` | Abstract Eloquent implementation — extend and override `model()` |
-| `RequestCriteria` | Translates HTTP query parameters into Eloquent constraints |
-| `make:repository` | Artisan generator — creates a typed repository from a stub |
-| `make:criteria` | Artisan generator — creates a criteria class from a stub |
+### Core Usage (15-30 min)
+4. [Criteria](usage/criteria.md) - Create reusable query modifiers and manage the criteria stack.
+5. [RequestCriteria](usage/request-criteria.md) - Search, filter, sort, select columns, eager-load relations, and load counts from query parameters.
+6. [Scope Query](usage/scope-query.md) - Add one-off inline query constraints.
 
----
-
-## Architecture overview
-
-```
-Controller / Service
-        │
-        ▼
-  RepositoryInterface          ← what you type-hint
-        │
-        ▼
-  BaseRepository               ← what your repository extends
-  ├── applyCriteria()          ← runs all pushed criteria in order
-  ├── applyScope()             ← applies the one-off scopeQuery closure
-  └── [read / write methods]   ← delegates to Eloquent, resets model after each call
-        │
-        ▼
-  Criteria (stack)             ← each modifies the Eloquent builder in turn
-  ├── RequestCriteria          ← search, filter, orderBy, with, ...
-  ├── ActiveUsersCriteria      ← your custom criteria
-  └── ...
-```
+### Reference & Support (10-20 min)
+7. [Method Reference](reference/method-reference.md) - Full method list with signatures and examples.
+8. [Contracts](reference/contracts.md) - Public interfaces and exception behavior.
+9. [Artisan Commands](reference/commands.md) - Repository and criteria generators.
+10. [Version Compatibility](version-compatibility.md) - Laravel and PHP support matrix.
+11. [Troubleshooting](troubleshooting.md) - Common issues and fixes.
+12. [FAQ](faq.md) - Frequently asked questions.
+13. [Contributing](contributing.md) - Contributing standards for docs, tests, and code.
 
 ---
 
-## Requirements
+## By Use Case
 
-| Requirement | Version |
-|---|---|
-| PHP | ^8.2 |
-| Laravel | ^11 \| ^12 \| ^13 |
+### I want to add repositories to an app
+1. [Installation & Setup](installation.md)
+2. [Getting Started](usage/getting-started.md)
+3. [Method Reference](reference/method-reference.md)
+
+### I want query filters I can reuse
+1. [Criteria](usage/criteria.md)
+2. [Scope Query](usage/scope-query.md)
+3. [Contracts](reference/contracts.md)
+
+### I want API endpoints with search and sorting
+1. [RequestCriteria](usage/request-criteria.md)
+2. [Configuration](configuration/options.md)
+3. [Troubleshooting](troubleshooting.md)
+
+### I want to customize generated files
+1. [Artisan Commands](reference/commands.md)
+2. [Configuration](configuration/options.md)
+
+### Something is not working
+1. [Troubleshooting](troubleshooting.md)
+2. [FAQ](faq.md)
+3. [Version Compatibility](version-compatibility.md)
 
 ---
 
-## Sections
+## Document Categories
 
-| Section | What it covers |
-|---|---|
-| [Installation](installation) | Composer require, publish config |
-| [Usage → Getting Started](usage/getting-started) | Create a repository, bind it, inject and use it |
-| [Usage → Criteria](usage/criteria) | Create criteria, push/pop/skip, one-off scopes |
-| [Usage → RequestCriteria](usage/request-criteria) | HTTP-driven filtering, all query parameters |
-| [Usage → Scope Query](usage/scope-query) | One-off anonymous query scopes |
-| [Configuration → Options](configuration/options) | Full `config/repository.php` reference |
-| [Reference → Method Reference](reference/method-reference) | All repository methods with signatures |
-| [Reference → Contracts](reference/contracts) | All three interfaces |
-| [Reference → Commands](reference/commands) | `make:repository` and `make:criteria` |
-| [Changelog](changelog) | Version history |
-| [License](license) | MIT licence |
+| Category | Files | Time |
+|---|---|---|
+| Getting Started | Installation, Getting Started, Configuration | 10 min |
+| Core Usage | Criteria, RequestCriteria, Scope Query | 30 min |
+| Reference | Method Reference, Contracts, Commands | 20 min |
+| Support | Compatibility, Troubleshooting, FAQ, Contributing | 20 min |
+
+---
+
+## Estimated Reading Times
+
+- Complete guide: 60-90 minutes
+- Essentials: 25 minutes
+- Quick reference: 10 minutes
+
+---
+
+## Contributing to Docs
+
+Found an error or want to improve the docs? See [Contributing](contributing.md).

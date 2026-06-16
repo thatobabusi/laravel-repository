@@ -31,7 +31,7 @@ class UserRepository extends BaseRepository
 }
 ```
 
-The only required override is `model()` — return the fully-qualified class name of the Eloquent model the repository wraps.
+The only required override is `model()` - return the fully-qualified class name of the Eloquent model the repository wraps.
 
 ### Sub-directory support
 

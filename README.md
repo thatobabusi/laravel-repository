@@ -1,55 +1,31 @@
 # Laravel Repository Pattern
 
-A Laravel 13-compatible repository pattern implementation with Eloquent, criteria-based query filtering, and Artisan generators.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/thatobabusi/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository-pattern)
+[![Total Downloads](https://img.shields.io/packagist/dt/thatobabusi/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/thatobabusi/laravel-repository-pattern)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-[![Tests](https://github.com/thatobabusi/laravel-repository-pattern/actions/workflows/tests.yml/badge.svg)](https://github.com/thatobabusi/laravel-repository-pattern/actions)
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+Laravel Repository Pattern is an Eloquent-backed repository toolkit for Laravel applications. It gives you a reusable `BaseRepository`, contracts for CRUD and criteria-based query composition, HTTP-driven filtering with `RequestCriteria`, and Artisan generators for repositories and criteria.
 
----
-
-## Requirements
-
-| Dependency | Version |
-|---|---|
-| PHP | ^8.2 |
-| Laravel | ^11 \| ^12 \| ^13 |
-
----
-
-## Installation
+## Quick Start
 
 ```bash
 composer require thatobabusi/laravel-repository-pattern
-```
-
-The service provider is auto-discovered. To publish the config file:
-
-```bash
 php artisan vendor:publish --tag=repository-config
-```
-
----
-
-## Quickstart
-
-### 1. Create a repository
-
-```bash
 php artisan make:repository User
 ```
 
-This generates `app/Repositories/UserRepository.php`:
+The generated repository only needs to point at its Eloquent model:
 
 ```php
 namespace App\Repositories;
 
-use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
 use App\Models\User;
+use Thatobabusi\LaravelRepositoryPattern\Eloquent\BaseRepository;
 
 class UserRepository extends BaseRepository
 {
     protected array $fieldSearchable = [
-        'name'  => 'like',
+        'name' => 'like',
         'email' => '=',
     ];
 
@@ -60,91 +36,99 @@ class UserRepository extends BaseRepository
 }
 ```
 
-### 2. Bind in a service provider
+Use it from controllers, services, jobs, or actions:
 
 ```php
 use App\Repositories\UserRepository;
-use Thatobabusi\LaravelRepositoryPattern\Contracts\RepositoryInterface;
-
-$this->app->bind(RepositoryInterface::class, UserRepository::class);
-```
-
-### 3. Use in a controller
-
-```php
-use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function __construct(private UserRepository $users) {}
 
-    public function index()
+    public function index(Request $request)
     {
         return $this->users->paginate(25);
-    }
-
-    public function store(Request $request)
-    {
-        return $this->users->create($request->validated());
     }
 }
 ```
 
----
+See [Getting Started](docs/usage/getting-started.md) for the complete walkthrough.
 
-## API Reference
+## Documentation
 
-### Read operations
+Complete documentation is organized into focused guides:
 
-| Method | Description |
-|---|---|
-| `all(columns)` | Retrieve all records |
-| `paginate(limit, columns)` | Paginate results |
-| `simplePaginate(limit, columns)` | Simple pagination (no total count) |
-| `find(id, columns)` | Find by primary key (throws `ModelNotFoundException`) |
-| `findByField(field, value, columns)` | Find all records where field = value |
-| `findWhere(where, columns)` | Find with multiple conditions |
-| `findWhereIn(field, values, columns)` | `WHERE field IN (...)` |
-| `findWhereNotIn(field, values, columns)` | `WHERE field NOT IN (...)` |
-| `findWhereBetween(field, values, columns)` | `WHERE field BETWEEN ? AND ?` |
-| `pluck(value, key)` | Pluck a column |
-| `lists(value, key)` | Alias for `pluck()` |
-| `firstOrNew(attributes)` | First matching model or new unsaved instance |
-| `firstOrCreate(attributes)` | First matching model or create and save |
+### Getting Started
+- [Installation & Setup](docs/installation.md) - Install the package, publish config, and create your first repository.
+- [Configuration](docs/configuration/options.md) - Configure pagination, request parameter names, and generator paths.
 
-### Write operations
+### Using the Toolkit
+- [Getting Started](docs/usage/getting-started.md) - Generate, bind, inject, and extend repositories.
+- [Criteria](docs/usage/criteria.md) - Build reusable query modifiers and manage the criteria stack.
+- [RequestCriteria](docs/usage/request-criteria.md) - Add URL-driven search, filter, sorting, eager loading, and counts.
+- [Scope Query](docs/usage/scope-query.md) - Apply one-off anonymous query constraints.
 
-| Method | Description |
-|---|---|
-| `create(attributes)` | Create and persist a new record |
-| `update(attributes, id)` | Update record by primary key |
-| `updateOrCreate(attributes, values)` | Update or create |
-| `delete(id)` | Delete by primary key |
-| `deleteWhere(where)` | Delete all records matching conditions |
-| `sync(id, relation, attributes)` | Sync a many-to-many relation |
-| `syncWithoutDetaching(id, relation, attributes)` | Sync without detaching |
+### Reference
+- [Method Reference](docs/reference/method-reference.md) - Every repository method with signatures and examples.
+- [Contracts](docs/reference/contracts.md) - `RepositoryInterface`, `CriteriaInterface`, and `RepositoryCriteriaInterface`.
+- [Artisan Commands](docs/reference/commands.md) - `make:repository` and `make:criteria`.
 
-### Query modifiers (chainable)
+### Support
+- [Version Compatibility](docs/version-compatibility.md) - Laravel and PHP support matrix.
+- [Troubleshooting](docs/troubleshooting.md) - Common errors and fixes.
+- [FAQ](docs/faq.md) - Short answers to common questions.
+- [Contributing](docs/contributing.md) - How to contribute docs, tests, and package changes.
+- [Changelog](CHANGELOG.md) - Release history.
 
-| Method | Description |
-|---|---|
-| `orderBy(column, direction)` | Apply ORDER BY |
-| `with(relations)` | Eager-load relations |
-| `withCount(relations)` | Eager-load relation counts |
-| `has(relation)` | Filter by relation existence |
-| `whereHas(relation, closure)` | Filter by relation with constraint |
-| `hidden(fields)` | Hide attributes from results |
-| `visible(fields)` | Restrict visible attributes |
-| `scopeQuery(closure)` | Apply an arbitrary query scope |
-| `resetScope()` | Remove the applied scope |
+## Key Features
 
----
+- Eloquent-backed `BaseRepository` with common CRUD and query operations
+- Criteria stack for reusable, composable query filters
+- `RequestCriteria` for HTTP-driven search, filtering, ordering, eager loading, and relation counts
+- Chainable query helpers: `orderBy`, `with`, `withCount`, `has`, `whereHas`, `hidden`, `visible`, and `scopeQuery`
+- Artisan generators for repositories and criteria
+- Configurable generator paths and root namespace
+- Laravel package auto-discovery
+- Laravel 11, 12, and 13 support
 
-## Criteria
+## Version Compatibility
 
-Criteria are reusable, composable query modifiers.
+| Laravel | Package | PHP | Status |
+|---|---|---|---|
+| 11.x - 13.x | 1.x | ^8.2 | Current |
 
-### Generate a criteria class
+See [Version Compatibility](docs/version-compatibility.md) for details.
+
+## Example: HTTP-Driven Filtering
+
+Push `RequestCriteria` in a controller and expose a flexible listing endpoint:
+
+```php
+use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
+use Thatobabusi\LaravelRepositoryPattern\Criteria\RequestCriteria;
+
+class UserController extends Controller
+{
+    public function index(Request $request, UserRepository $users)
+    {
+        $users->pushCriteria(new RequestCriteria($request));
+
+        return $users->paginate(25);
+    }
+}
+```
+
+Supported query parameters include:
+
+```text
+GET /users?search=john&orderBy=name&sortedBy=asc&filter=id;name;email&with=profile
+```
+
+See [RequestCriteria](docs/usage/request-criteria.md) for all supported parameters and security notes.
+
+## Example: Custom Criteria
 
 ```bash
 php artisan make:criteria ActiveUsers
@@ -165,119 +149,12 @@ class ActiveUsersCriteria implements CriteriaInterface
 }
 ```
 
-### Apply criteria
-
 ```php
-$this->users
+$users = $this->users
     ->pushCriteria(new ActiveUsersCriteria())
-    ->pushCriteria(new RecentlyCreatedCriteria())
+    ->orderBy('name')
     ->paginate(25);
 ```
-
-### Criteria management
-
-```php
-$repo->skipCriteria(true);       // bypass all criteria
-$repo->popCriteria($criteria);   // remove a specific criteria
-$repo->getCriteria();            // get the criteria collection
-$repo->resetCriteria();          // clear all criteria
-$repo->getByCriteria($criteria); // apply a single criteria and get results
-```
-
----
-
-## RequestCriteria — HTTP-Driven Filtering
-
-`RequestCriteria` translates incoming HTTP query parameters directly into Eloquent query constraints. Inject it once and your endpoint gains sorting, searching, filtering, and eager loading — all driven by URL parameters.
-
-```php
-use Thatobabusi\LaravelRepositoryPattern\Criteria\RequestCriteria;
-
-class UserController extends Controller
-{
-    public function index(Request $request, UserRepository $users)
-    {
-        $users->pushCriteria(new RequestCriteria($request));
-
-        return $users->paginate(25);
-    }
-}
-```
-
-### Supported parameters
-
-| Parameter | Example | Effect |
-|---|---|---|
-| `search` | `search=john` | `WHERE name LIKE '%john%'` (uses `fieldSearchable`) |
-| `search` | `search=email:john@example.com` | Field-specific search |
-| `searchFields` | `searchFields=name:like;email:=` | Override conditions per field |
-| `searchJoin` | `searchJoin=and` | `AND` instead of `OR` between search fields |
-| `filter` | `filter=id;name;email` | `SELECT id, name, email` |
-| `orderBy` | `orderBy=name` | `ORDER BY name ASC` |
-| `sortedBy` | `sortedBy=desc` | `ORDER BY name DESC` |
-| `with` | `with=posts;profile` | Eager-load `posts` and `profile` |
-| `withCount` | `withCount=posts` | Load `posts_count` |
-
-### Configuring searchable fields
-
-In your repository, declare which fields are searchable and with what condition:
-
-```php
-protected array $fieldSearchable = [
-    'name'  => 'like',
-    'email' => '=',
-    'age'   => 'between',
-    'tags'  => 'in',
-];
-```
-
-### Customising parameter names
-
-Override the query-string parameter names via `.env` or `config/repository.php` to avoid conflicts:
-
-```env
-REPOSITORY_CRITERIA_SEARCH=q
-REPOSITORY_CRITERIA_ORDER_BY=sort
-REPOSITORY_CRITERIA_SORTED_BY=direction
-```
-
----
-
-## Configuration
-
-```php
-// config/repository.php
-
-return [
-    'pagination' => [
-        'limit' => env('REPOSITORY_PAGINATION_LIMIT', 15),
-    ],
-
-    'criteria' => [
-        'params' => [
-            'search'       => env('REPOSITORY_CRITERIA_SEARCH', 'search'),
-            'searchFields' => env('REPOSITORY_CRITERIA_SEARCH_FIELDS', 'searchFields'),
-            'filter'       => env('REPOSITORY_CRITERIA_FILTER', 'filter'),
-            'orderBy'      => env('REPOSITORY_CRITERIA_ORDER_BY', 'orderBy'),
-            'sortedBy'     => env('REPOSITORY_CRITERIA_SORTED_BY', 'sortedBy'),
-            'with'         => env('REPOSITORY_CRITERIA_WITH', 'with'),
-            'withCount'    => env('REPOSITORY_CRITERIA_WITH_COUNT', 'withCount'),
-            'searchJoin'   => env('REPOSITORY_CRITERIA_SEARCH_JOIN', 'searchJoin'),
-        ],
-    ],
-
-    'generator' => [
-        'basePath'      => app_path(),
-        'rootNamespace' => 'App\\',
-        'paths'         => [
-            'repositories' => 'Repositories',
-            'criteria'     => 'Criteria',
-        ],
-    ],
-];
-```
-
----
 
 ## Testing
 
@@ -285,14 +162,12 @@ return [
 composer test
 ```
 
----
+## Credits
 
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md).
-
----
+- [Thato Babusi](https://github.com/thatobabusi)
+- [Prettus Laravel Repository](https://github.com/andersao/l5-repository) for the original community pattern many Laravel teams know
+- [All Contributors](../../contributors)
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+The MIT License (MIT). Please see [License File](LICENSE) for more information.

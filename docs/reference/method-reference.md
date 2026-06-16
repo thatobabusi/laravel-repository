@@ -1,6 +1,6 @@
 # Method Reference
 
-All methods are defined in `RepositoryInterface` and implemented in `BaseRepository`. Methods marked **chainable** return `static` and can be chained before a terminal call. All other methods are terminal — they execute the query and reset the model.
+All methods are defined in `RepositoryInterface` and implemented in `BaseRepository`. Methods marked **chainable** return `static` and can be chained before a terminal call. All other methods are terminal - they execute the query and reset the model.
 
 ---
 
@@ -31,7 +31,7 @@ $users = $this->users->paginate(25, ['id', 'name']);
 
 ### `simplePaginate(int $limit = 15, array $columns = ['*']): mixed`
 
-Return a `Paginator` (no total count — better performance on large tables).
+Return a `Paginator` (no total count - better performance on large tables).
 
 ```php
 $users = $this->users->simplePaginate(25);
@@ -274,7 +274,7 @@ $this->users->visible(['id', 'name', 'email'])->all();
 
 ### `scopeQuery(Closure $scope): static`
 
-Apply an anonymous one-off query closure. See [Usage → Scope Query](../usage/scope-query).
+Apply an anonymous one-off query closure. See [Scope Query](../usage/scope-query.md).
 
 ```php
 $this->users->scopeQuery(fn ($q) => $q->where('active', true))->all();
@@ -292,7 +292,7 @@ $this->users->resetScope();
 
 ## Criteria methods
 
-See [Usage → Criteria](../usage/criteria) for full examples.
+See [Criteria](../usage/criteria.md) for full examples.
 
 | Method | Description |
 |---|---|

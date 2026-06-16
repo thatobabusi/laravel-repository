@@ -1,6 +1,6 @@
 # Criteria
 
-Criteria are small, single-responsibility classes that modify an Eloquent query builder. They implement `CriteriaInterface`, which has a single method: `apply()`. Stack as many criteria as you need — they run in push order before the terminal query executes.
+Criteria are small, single-responsibility classes that modify an Eloquent query builder. They implement `CriteriaInterface`, which has a single method: `apply()`. Stack as many criteria as you need - they run in push order before the terminal query executes.
 
 ---
 

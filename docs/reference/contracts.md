@@ -68,7 +68,7 @@ interface CriteriaInterface
 }
 ```
 
-`$model` is either an Eloquent `Model` or an Eloquent `Builder` instance — it can be treated as a builder in all practical cases. `$repository` gives access to `getFieldsSearchable()` and any public repository method.
+`$model` is either an Eloquent `Model` or an Eloquent `Builder` instance - it can be treated as a builder in all practical cases. `$repository` gives access to `getFieldsSearchable()` and any public repository method.
 
 ---
 
